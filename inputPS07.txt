@@ -1,0 +1,21 @@
+# Assignment 1 - PS07 sample test case 1
+START A
+GOAL G
+
+EDGES
+A B:1 C:1
+B D:1 E:1
+C F:1
+D G:1
+E G:1
+F G:1
+G
+
+HEURISTICS
+A 10
+B 8
+C 5
+D 7
+E 3
+F 2
+G 0

@@ -1,0 +1,8 @@
+Greedy Best First Search - Emergency Route Planning
+Start Node: A
+Goal Node: G
+Visited Nodes / Expansion Order: A -> C -> F -> G
+Optimal Path: A -> C -> F -> G
+Total Cost: 3
+Measured Time Complexity: 0.00011700 seconds for this input
+Measured Space Complexity: 1.72 KB peak memory for this input

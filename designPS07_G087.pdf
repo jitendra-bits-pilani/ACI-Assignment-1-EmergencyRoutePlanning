@@ -1,0 +1,215 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R 5 0 R] /Count 2 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 7 0 R >> >> /Contents 4 0 R >>
+endobj
+4 0 obj
+<< /Length 4410 >>
+stream
+BT
+/F1 10 Tf
+50 770 Td
+(Assignment 1 - PS07: Emergency Route Planning using Greedy Best First Search) Tj
+0 -12 Td
+(Group Id: G087) Tj
+0 -12 Td
+() Tj
+0 -12 Td
+(1. Problem Formulation) Tj
+0 -12 Td
+(The disaster management control center needs a problem-solving agent that finds an emergency) Tj
+0 -12 Td
+(route from a start location to a goal location during flooding in Chennai. The city map is) Tj
+0 -12 Td
+(represented as a graph where each node is a location and each edge is a reachable road) Tj
+0 -12 Td
+(segment. The agent uses Greedy Best First Search, where f\(n\) = h\(n\), so the next expanded) Tj
+0 -12 Td
+(node is always the frontier node with the smallest estimated distance to the goal.) Tj
+0 -12 Td
+() Tj
+0 -12 Td
+(Initial State: the user-provided start node.) Tj
+0 -12 Td
+(Goal Test: current node equals the goal node.) Tj
+0 -12 Td
+(Actions: move from the current location to any connected neighboring location.) Tj
+0 -12 Td
+(Path Cost: sum of edge costs along the returned route. If no edge cost is supplied in the) Tj
+0 -12 Td
+(input file, cost 1 is used.) Tj
+0 -12 Td
+() Tj
+0 -12 Td
+(2. PEAS Description) Tj
+0 -12 Td
+(Performance Measure: reach the affected area quickly, produce a valid path, minimize) Tj
+0 -12 Td
+(heuristic distance at every choice, report the visited order, path, cost, measured runtime,) Tj
+0 -12 Td
+(and measured memory.) Tj
+0 -12 Td
+(Environment: Chennai road network during heavy rain, including possible flooded or blocked) Tj
+0 -12 Td
+(roads represented by missing or high-cost edges.) Tj
+0 -12 Td
+(Actuators: route selection decisions, expansion of next city node, and output of route) Tj
+0 -12 Td
+(guidance to rescue teams.) Tj
+0 -12 Td
+(Sensors: input graph, heuristic table, start node, goal node, and edge-cost information.) Tj
+0 -12 Td
+() Tj
+0 -12 Td
+(3. Environmental Characteristics) Tj
+0 -12 Td
+(The environment is partially observable because the program only knows the graph and) Tj
+0 -12 Td
+(heuristic values provided in the input. It is deterministic for the submitted implementation) Tj
+0 -12 Td
+(because each action leads to the listed neighbor with a known cost. It is sequential because) Tj
+0 -12 Td
+(each route decision affects the following state. It is static during one search run because) Tj
+0 -12 Td
+(the graph is not changed while the algorithm executes. It is discrete because locations and) Tj
+0 -12 Td
+(roads are represented as graph nodes and edges. It is single-agent from the search) Tj
+0 -12 Td
+(perspective because only one rescue route is planned by this agent.) Tj
+0 -12 Td
+() Tj
+0 -12 Td
+(4. Heuristic Function) Tj
+0 -12 Td
+(The heuristic h\(n\) estimates how close a node n is to the goal. In this assignment's sample) Tj
+0 -12 Td
+(cases, lower heuristic values indicate locations that appear closer to the affected area.) Tj
+0 -12 Td
+(GBFS ignores accumulated path cost while choosing the next node; it expands the frontier) Tj
+0 -12 Td
+(node with the smallest h\(n\). This makes the search fast and goal-directed, but it does not) Tj
+0 -12 Td
+(guarantee the minimum-cost path for all weighted graphs.) Tj
+0 -12 Td
+() Tj
+0 -12 Td
+(5. Data Structures and Algorithm) Tj
+0 -12 Td
+(The graph is stored as an adjacency list: node -> list of \(neighbor, cost\). Heuristic values) Tj
+0 -12 Td
+(are stored in a dictionary for O\(1\) lookup. The frontier is a bounded min-priority queue) Tj
+0 -12 Td
+(implemented using heapq. The queue explicitly raises an error if insertion is attempted when) Tj
+0 -12 Td
+(full or deletion is attempted when empty, satisfying the data-structure error-handling) Tj
+0 -12 Td
+(requirement. A visited set prevents repeated expansion of the same node. Each priority queue) Tj
+0 -12 Td
+(entry stores heuristic value, insertion order, current node, path so far, and accumulated) Tj
+0 -12 Td
+(cost.) Tj
+0 -12 Td
+() Tj
+0 -12 Td
+(Algorithm steps:) Tj
+0 -12 Td
+(1. Read graph, heuristics, start node, and goal node from the input file.) Tj
+0 -12 Td
+(2. Insert the start node in the priority queue with priority h\(start\).) Tj
+0 -12 Td
+(3. Repeatedly remove the node with the lowest heuristic value.) Tj
+0 -12 Td
+(4. If the node is the goal, print expansion order, path, cost, measured time, and measured) Tj
+0 -12 Td
+(memory.) Tj
+0 -12 Td
+(5. Otherwise, insert all unvisited neighbors with priority h\(neighbor\).) Tj
+0 -12 Td
+(6. If the frontier becomes empty, report that no route exists.) Tj
+0 -12 Td
+() Tj
+ET
+endstream
+endobj
+5 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 7 0 R >> >> /Contents 6 0 R >>
+endobj
+6 0 obj
+<< /Length 1689 >>
+stream
+BT
+/F1 10 Tf
+50 770 Td
+(6. Complexity Reporting) Tj
+0 -12 Td
+(The program prints measured runtime using time.perf_counter\(\) and measured peak memory using) Tj
+0 -12 Td
+(tracemalloc for the actual input run, as required by the assignment instruction not to) Tj
+0 -12 Td
+(calculate these theoretically in the implementation. For design understanding, if V is the) Tj
+0 -12 Td
+(number of locations and E is the number of roads, the priority queue operations make the) Tj
+0 -12 Td
+(expected algorithmic time O\(E log E\) in the worst case and the auxiliary space O\(E\) for the) Tj
+0 -12 Td
+(frontier plus visited/path information.) Tj
+0 -12 Td
+() Tj
+0 -12 Td
+(7. Alternate Modeling Approach) Tj
+0 -12 Td
+(An alternate model is to represent the problem as a weighted shortest-path search using A*) Tj
+0 -12 Td
+(with f\(n\) = g\(n\) + h\(n\), where g\(n\) is the cost from the start and h\(n\) is the estimated) Tj
+0 -12 Td
+(remaining cost. A* generally has higher bookkeeping cost than GBFS because it must track and) Tj
+0 -12 Td
+(compare accumulated path costs, but it can find an optimal path when the heuristic is) Tj
+0 -12 Td
+(admissible and consistent. GBFS is simpler and often faster for emergency guidance when a) Tj
+0 -12 Td
+(quick feasible route is more important than guaranteed optimality, but it may choose a) Tj
+0 -12 Td
+(longer route if the heuristic is misleading.) Tj
+0 -12 Td
+() Tj
+0 -12 Td
+(8. Sample Result) Tj
+0 -12 Td
+(For Test Case 1, start A and goal G, the program expands:) Tj
+0 -12 Td
+(A -> C -> F -> G) Tj
+0 -12 Td
+(The returned path is:) Tj
+0 -12 Td
+(A -> C -> F -> G) Tj
+0 -12 Td
+(The total cost is 3 when every road segment has unit cost.) Tj
+0 -12 Td
+() Tj
+ET
+endstream
+endobj
+7 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+xref
+0 8
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000121 00000 n 
+0000000247 00000 n 
+0000004709 00000 n 
+0000004835 00000 n 
+0000006576 00000 n 
+trailer
+<< /Size 8 /Root 1 0 R >>
+startxref
+6646
+%%EOF
